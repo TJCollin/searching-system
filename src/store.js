@@ -5,30 +5,30 @@ Vue.use(Vuex)
 
 const state = {
   CCID: '',
-  tick: 1000,
-  banlance: []
+  response: {},
+  endTime: '',
 }
 
 const getters = {
   getCCID: state => {
     return state.CCID
   },
-  getBanlance: state => {
-    return state.banlance
+  getResponse: state => {
+    return state.response
   },
-  getTick: state => {
-    return state.tick
-  }
+  getEndTime: state => {
+    return state.endTime
+  },
 }
 const mutations = {
   LOAD_CCID (state, id) {
     state.CCID = id
   },
-  LOAD_TICK (state, tick) {
-    state.tick = tick
+  LOAD_RESPONSE (state, response) {
+    state.response = response
   },
-  LOAD_BANLANCE (state, banlance) {
-    state.banlance = banlance
+  LOAD_ENDTIME (state, endTime) {
+    state.endTime = endTime
   }
 }
 
@@ -36,11 +36,11 @@ const actions = {
   loadCCID ({commit}, id) {
     commit('LOAD_CCID', id)
   },
-  loadBanlance ({ commit }, banlance) {
-    commit('LOAD_BANLANCE', banlance)
+  loadStartTime ({ commit }, response) {
+    commit('LOAD_STARTTIME', response)
   },
-  loadTick ({ commit }, tick){
-    commit('LOAD_TICK', tick)
+  loadEndTime ({ commit }, endTime){
+    commit('LOAD_ENDTIME', endTime)
   }
 }
 
