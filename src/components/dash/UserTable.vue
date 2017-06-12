@@ -8,7 +8,7 @@
             <h3 class="widget-user-username center-text">测试过程实时监控</h3>
           </div>
           <div class="row" style="padding-top: 20px">
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="ion"></i></span>
 
@@ -21,7 +21,7 @@
                 <!-- /.info-box -->
               </div>
               <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-red"><i class="fa"></i></span>
 
@@ -38,12 +38,12 @@
               <!-- fix for small devices only -->
               <div class="clearfix visible-sm-block"></div>
 
-              <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="ion"></i></span>
 
                   <div class="info-box-content">
-                    <span class="info-box-text">平均交易时间</span>
+                    <span class="info-box-text">平均应答时间</span>
                     <span class="info-box-number">{{averageInvokeTime}}</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -51,7 +51,7 @@
                 <!-- /.info-box -->
               </div>
               <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-xs-12">
+              <!-- <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="ion"></i></span>
 
@@ -62,7 +62,7 @@
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
-              </div>
+              </div> 
           </div>
 
           <div class="box-body"> 
@@ -151,6 +151,7 @@ export default {
                 type : 'value'
             }
         ],
+        animation: true ,
         series : [
              { // For shadow
                 type: 'bar',

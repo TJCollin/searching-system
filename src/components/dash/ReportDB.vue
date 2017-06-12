@@ -2,9 +2,9 @@
     <!-- Main content -->
   <section class="content">
     <div class="row center-block">
-      <div class="box box-widget widget-user" style="width: 960px; margin-left: 15px;">
-        <div class="box-body"> 
-          <div class="widget-user-header text-center" style="height: 80px;">
+    	<div class="box box-widget widget-user" style="width: 960px; margin-left: 15px;">
+    		<div class="box-body"> 
+    			<div class="widget-user-header text-center" style="height: 80px;">
             <h3 class="widget-user-username center-text">区块链测试结果报告</h3>
           </div>
             <form class="form-horizontal" role="form">
@@ -13,22 +13,22 @@
               </div>
             </form>
             <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <label for="labels" style="margin-left:35px;font-size: 15px ">测试分析时段:&nbsp;&nbsp;</label><u style="font-size: 15px">{{startTime}}</u><font size="1px">&nbsp;到&nbsp;</font><u style="font-size: 15px">{{endTime}}</u>
-              </div>
+            	<div class="form-group">
+            		<label for="labels" style="margin-left:35px;font-size: 15px ">测试分析时段:&nbsp;&nbsp;</label><u style="font-size: 15px">{{startTime}}</u><font size="1px">&nbsp;到&nbsp;</font><u style="font-size: 15px">{{endTime}}</u>
+            	</div>
             </form>
             <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <div class="col-sm-4"><label for="labels" style="margin-left: 20px;font-size: 15px ">总交易数目:&nbsp;&nbsp;</label><u style="font-size: 15px">{{totalAmount}}</u>笔</div>
-                <div class="col-sm-4"><label for="labels" style="font-size: 15px ">平均交易确认时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{avCheckTime}}</u>/毫秒</div>
-                <div class="col-sm-4"><label for="labels" style="font-size: 15px ">平均应答时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{avReplyTime}}</u>/毫秒</div>
-              </div>
+            	<div class="form-group">
+	            	<div class="col-sm-4"><label for="labels" style="margin-left: 20px;font-size: 15px ">总交易数目:&nbsp;&nbsp;</label><u style="font-size: 15px">{{totalAmount}}</u>笔</div>
+	            	<div class="col-sm-4"><label for="labels" style="font-size: 15px ">平均交易确认时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{avCheckTime}}</u>/毫秒</div>
+	            	<div class="col-sm-4"><label for="labels" style="font-size: 15px ">平均应答时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{avReplyTime}}</u>笔</div>
+            	</div>
             </form>
             <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <div class="col-sm-4"><label for="labels" style="margin-left: 20px;font-size: 15px ">最大交易确认时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{maxCheckTime}}</u>/毫秒</div>
-                <div class="col-sm-4"><label for="labels" style="font-size: 15px ">最小交易确认时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{minCheckTime}}</u>/毫秒</div>
-              </div>
+            	<div class="form-group">
+	            	<div class="col-sm-4"><label for="labels" style="margin-left: 20px;font-size: 15px ">最大交易确认时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{maxCheckTime}}</u>/毫秒</div>
+	            	<div class="col-sm-4"><label for="labels" style="font-size: 15px ">最小交易确认时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{minCheckTime}}</u>/毫秒</div>
+            	</div>
             </form>
             <form class="form-horizontal" role="form">
               <div class="form-group">
@@ -36,6 +36,7 @@
                 <div class="col-sm-4"><label for="labels" style="font-size: 15px ">最小应答时长:&nbsp;&nbsp;</label><u style="font-size: 15px">{{minReplyTime}}</u>/毫秒</div>
               </div>
             </form>
+            <br>
             <br>
             <div id="chart1" style="padding-left:0px" v-show="true">
               <div id="main"  :style="{width:'800px',height:'200px'}"></div>
@@ -51,7 +52,7 @@
           </div>
 
         </div>
-      
+    	
     </div>
   </section>
 </template>
@@ -87,8 +88,15 @@ export default {
   },
   mounted (){
   	var self = this
-  	self.response = self.$store.getters.getResponse
-  	var response = self.response
+  	var temp1 = self.$store.getters.getResponse
+  	var temp2 = JSON.stringify(temp1)
+    console.log("temp2")
+    console.log(temp2)
+    var temp3 = eval('(' + temp2 + ')')
+    var data = eval('(' + temp3 + ')')
+    console.log(data)
+    var response = data.data
+    console.log(response)
   	self.barData = response.data
     self.labels = response.labels
     self.reply = response.reply
@@ -98,14 +106,13 @@ export default {
     self.maxCheckTime = response.maxCheckTime
     self.minCheckTime = response.minCheckTime
     self.totalAmount = response.totalAmount
-    self.avCheckTime= response.avCheckTime
+    self.avarageCheckTime = response.avCheckTime
     self.startTime = response.startTime
     self.endTime = response.endTime
     self.maxReplyTime = response.maxReplyTime
     self.minReplyTime = response.minReplyTime
     self.avReplyTime = response.avReplyTime
-    console.log(self.avCheckTime)
-    console.log(self.maxCheckTime)
+    console.log(self.check)
   	self.showChart()
   },
 

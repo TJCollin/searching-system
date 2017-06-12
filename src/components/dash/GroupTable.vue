@@ -225,13 +225,16 @@ export default {
     
     startSearching: function () {
       var self = this
-      var t1 = self.startTime.getTime() + self.startHour * 3600000 + self.startMin * 60000 + self.startSecond * 1000 + self.startMilli
-      var t2 = self.endTime.getTime() + self.endMin * 60000 + self.endSecond * 1000 + self.endMilli
+      console.log(self.startTime)
+      console.log(self.endTime)
+      console.log(self.endHour)
+      var t1 = self.startTime.getTime() + self.startHour * 3600000 + self.startMin * 60000 + self.startSecond * 1000 + self.startMilli - self.startTime.getHours() * 3600000 - self.startTime.getMinutes() * 60000 -self.startTime.getSeconds() * 1000
+      var t2 = self.endTime.getTime() + self.endHour * 3600000 + self.endMin * 60000 + self.endSecond * 1000 + self.endMilli - self.endTime.getHours() * 3600000 - self.endTime.getMinutes() * 60000 -self.endTime.getSeconds() * 1000
       self.buttonText = "正在查询中"
       self.disabled = "true"
       // self.visualization = true
-      console.log(this.startTime)
-      console.log(this.startTime.getTime())
+      console.log(t1)
+      console.log(t2)
       if (self.startTime.getTime() > self.endTime.getTime()) {
         alert('请重新选择查询时间')
       } else {
@@ -247,20 +250,10 @@ export default {
             self.buttonText = "查询"
             self.disabled = false
             var data = eval(response.data)
-            var barData = data.data
-            var labels = data.labels
-            var delay = data.delay
             console.log(data)
-            if (barData !== "null") {
+            if (data !== "null") {
               self.$store.commit('LOAD_RESPONSE', data)
               self.$router.push({path: '/report'})
-              /*self.barData = barData
-              console.log(self.barData)
-              self.labels = labels
-              console.log(labels)
-              self.delay = delay
-              self.visualization = true
-              self.showChart()*/
             }
           })
       }

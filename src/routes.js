@@ -3,6 +3,8 @@ import LoginView from './components/Login'
 import UserTable from './components/dash/UserTable'
 import GroupTable from './components/dash/GroupTable'
 import Report from './components/dash/Report'
+import List from './components/dash/List'
+import ReportDB from './components/dash/ReportDB'
 
 
 const routes = [{
@@ -19,6 +21,12 @@ const routes = [{
 	},{
 		path: '/report',
 		component: Report
+	},{
+		path: '/list',
+		component: List
+	},{
+		path: '/reportDB',
+		component: ReportDB
 	}]
 }]
 
